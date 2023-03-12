@@ -1,0 +1,28 @@
+name: Platform IO CI
+on: [push]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        smartboard: ["ESP32_2432S028R", "ESP32_3248S035R", "ESP32_3248S035C"]
+        orientation: ["TFT_ORIENTATION_PORTRAIT", "TFT_ORIENTATION_LANDSCAPE", "TFT_ORIENTATION_PORTRAIT_INV", "TFT_ORIENTATION_LANDSCAPE_INV"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+          architecture: "x64"
+      - name: Install PlatformIO
+        run: python -m pip install platformio
+      - name: Build firmware
+        run: pio ci --lib="." --board esp32dev "examples/lvgl_pushbutton/main.cpp"
+        env:
+          PLATFORMIO_BUILD_FLAGS: -Ofast -D LV_CONF_PATH="${{github.workspace}}/examples/lvgl_pushbutton/lv_conf.h" -D ${{matrix.orientation}} -D ${{matrix.smartboard}} -D TFT_PANEL_ORDER_RGB
+      - name: Archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: firmware.bin
+          path: .pio/build/*/firmware.bin
