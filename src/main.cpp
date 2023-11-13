@@ -15,7 +15,9 @@ void OnButtonClicked(lv_event_t *e)
 void setup()
 {
     Serial.begin(115200);
+#ifdef HAS_SPEAKER
     ledcAttachPin(SPEAKER_PIN, SPEAKER_PWM_CHANNEL);
+#endif    
     smartdisplay_init();
     ui_init();
 }
