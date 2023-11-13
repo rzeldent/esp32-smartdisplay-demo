@@ -3,12 +3,7 @@
 #include <esp32_smartdisplay.h>
 #include <ui/ui.h>
 
-void millisecond_display_update()
-{
-    char time_buffer[32];
-    sprintf(time_buffer, "%d", millis());
-    lv_label_set_text(ui_lblMillisecondsValue, time_buffer);
-}
+#define SPEAKER_PWM_CHANNEL    0
 
 void OnButtonClicked(lv_event_t *e)
 {
@@ -20,20 +15,38 @@ void OnButtonClicked(lv_event_t *e)
 void setup()
 {
     Serial.begin(115200);
-
+    ledcAttachPin(SPEAKER_PIN, SPEAKER_PWM_CHANNEL);
     smartdisplay_init();
     ui_init();
 }
 
 void loop()
 {
-    lv_timer_handler();
+    char text_buffer[32];
+    sprintf(text_buffer, "%d", millis());
+    lv_label_set_text(ui_lblMillisecondsValue, text_buffer);
 
+    auto const now = millis();
 #ifdef HAS_RGB_LED
-    auto r = (byte)(millis() / 75);
-    auto g = (byte)(millis() / 10);
-    auto b = (byte)(millis() / 150);
-    smartdisplay_set_led_color(lv_color32_t({.ch = {.blue = b, .green = g, .red = r}}));
+    auto const rgb = (now / 2000) % 8;
+    digitalWrite(LED_PIN_R, !(rgb & 0x01));
+    digitalWrite(LED_PIN_G, !(rgb & 0x02));
+    digitalWrite(LED_PIN_B, !(rgb & 0x04));
 #endif
-    millisecond_display_update();
+
+#ifdef HAS_LIGHTSENSOR
+    auto cdr = analogRead(LIGHTSENSOR_IN);
+    sprintf(text_buffer, "%d", cdr);
+    lv_label_set_text(ui_lblCdrValue, text_buffer);
+#endif
+
+#ifdef HAS_SPEAKER
+    if ((now % 1000) == 0) {
+        ledcWriteTone(SPEAKER_PWM_CHANNEL, 1000);
+        delay(10);
+        ledcWriteTone(SPEAKER_PWM_CHANNEL, 0);
+    }
+#endif
+
+    lv_timer_handler();
 }
