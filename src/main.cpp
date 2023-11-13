@@ -3,7 +3,7 @@
 #include <esp32_smartdisplay.h>
 #include <ui/ui.h>
 
-#define SPEAKER_PWM_CHANNEL    0
+#define SPEAKER_PWM_CHANNEL 0
 
 void OnButtonClicked(lv_event_t *e)
 {
@@ -15,9 +15,15 @@ void OnButtonClicked(lv_event_t *e)
 void setup()
 {
     Serial.begin(115200);
+    Serial.setDebugOutput(true);
+
+    log_i("CPU Freq: %d Mhz, %d core(s)", getCpuFrequencyMhz(), ESP.getChipCores());
+    log_i("Free heap: %d bytes", ESP.getFreeHeap());
+    log_i("SDK version: %s", ESP.getSdkVersion());
+
 #ifdef HAS_SPEAKER
     ledcAttachPin(SPEAKER_PIN, SPEAKER_PWM_CHANNEL);
-#endif    
+#endif
     smartdisplay_init();
     ui_init();
 }
@@ -43,7 +49,8 @@ void loop()
 #endif
 
 #ifdef HAS_SPEAKER
-    if ((now % 1000) == 0) {
+    if ((now % 1000) == 0)
+    {
         ledcWriteTone(SPEAKER_PWM_CHANNEL, 1000);
         delay(10);
         ledcWriteTone(SPEAKER_PWM_CHANNEL, 0);
