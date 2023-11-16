@@ -49,7 +49,7 @@ jobs:
       - name: Build firmware
         run: platformio run --environment ${{matrix.board}}
         env:
-          PLATFORMIO_BUILD_FLAGS: -Ofast -D LV_CONF_PATH="${{github.workspace}}/include/lv_conf.h" ${{matrix.orientation}} ${{matrix.smartboard}} ${{matrix.rgborder}}
+          PLATFORMIO_BUILD_FLAGS: -Ofast -D LV_CONF_PATH="${{github.workspace}}/include/lv_conf.h" -D${{matrix.smartboard}}
       - name: Archive
         uses: actions/upload-artifact@v3
         with:
