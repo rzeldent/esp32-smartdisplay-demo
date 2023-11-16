@@ -53,5 +53,5 @@ jobs:
       - name: Archive
         uses: actions/upload-artifact@v3
         with:
-          name: firmware.bin
-          path: .pio/build/*/firmware.bin
+          name: ${{matrix.smartboard}}.bin
+          path: .pio/build/*/*.bin
