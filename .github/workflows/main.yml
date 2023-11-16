@@ -47,7 +47,7 @@ jobs:
       - name: Install PlatformIO
         run: python -m pip install platformio
       - name: Build firmware
-        run: platformio run --board ${{matrix.board}}
+        run: platformio run --environment ${{matrix.board}}
         env:
           PLATFORMIO_BUILD_FLAGS: -Ofast -D LV_CONF_PATH="${{github.workspace}}/include/lv_conf.h" ${{matrix.orientation}} ${{matrix.smartboard}} ${{matrix.rgborder}}
       - name: Archive
