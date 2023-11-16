@@ -2404,7 +2404,7 @@
                   {
                     "nid": 1753057072,
                     "strtype": "OBJECT/Align",
-                    "strval": "BOTTOM_MID",
+                    "strval": "BOTTOM_RIGHT",
                     "InheritedType": 3
                   },
                   {
@@ -2607,7 +2607,7 @@
                   {
                     "nid": 1573988665,
                     "strtype": "IMAGE/Asset",
-                    "strval": "assets\\Lenna.png",
+                    "strval": "assets\\Lenna_165.png",
                     "InheritedType": 5
                   },
                   {

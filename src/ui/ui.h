@@ -30,7 +30,7 @@ extern lv_obj_t *ui_lblCountValue;
 extern lv_obj_t *ui_Image1;
 extern lv_obj_t *ui____initial_actions0;
 
-LV_IMG_DECLARE( ui_img_lenna_png);   // assets\Lenna.png
+LV_IMG_DECLARE( ui_img_lenna_165_png);   // assets\Lenna_165.png
 
 
 

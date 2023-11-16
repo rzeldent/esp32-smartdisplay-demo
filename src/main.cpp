@@ -17,7 +17,7 @@ void setup()
     Serial.begin(115200);
     Serial.setDebugOutput(true);
 
-    log_i("CPU Freq: %d Mhz, %d core(s)", getCpuFrequencyMhz(), ESP.getChipCores());
+    log_i("CPU: %s rev%d, CPU Freq: %d Mhz, %d core(s)", ESP.getChipModel(), ESP.getChipRevision(), getCpuFrequencyMhz(), ESP.getChipCores());
     log_i("Free heap: %d bytes", ESP.getFreeHeap());
     log_i("SDK version: %s", ESP.getSdkVersion());
 
