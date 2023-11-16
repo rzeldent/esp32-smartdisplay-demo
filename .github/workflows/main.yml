@@ -34,7 +34,7 @@ jobs:
           - board: "esp32-s3-devkitc-1"
             smartboard: "ESP32_8048S070N"
           - board: "esp32-s3-devkitc-1"
-            smartboard:  "-DESP32_8048S070R"
+            smartboard:  "ESP32_8048S070R"
           - board: "esp32-s3-devkitc-1"
             smartboard: "ESP32_8048S070C"
     steps:
