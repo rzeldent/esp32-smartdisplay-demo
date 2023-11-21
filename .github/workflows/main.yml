@@ -7,36 +7,69 @@ jobs:
     strategy:
       matrix:
         include:
-          - board: "esp32dev"
-            smartboard: "ESP32_2432S024N"
-          - board: "esp32dev"
-            smartboard: "ESP32_2432S024R"
-          - board: "esp32dev"
-            smartboard: "ESP32_2432S024C"
-          - board: "esp32dev"
-            smartboard: "ESP32_2432S028R"
-          - board: "esp32dev"
-            smartboard: "ESP32_3248S035R"
-          - board: "esp32dev"
-            smartboard: "ESP32_3248S035C"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S043N"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S043R"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S043C"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S050N"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S050R"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S050C"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S070N"
-          - board: "esp32-s3-devkitc-1"
-            smartboard:  "ESP32_8048S070R"
-          - board: "esp32-s3-devkitc-1"
-            smartboard: "ESP32_8048S070C"
+        - board: "esp32dev"
+          smartboard: "ESP32_2432S024N"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_2432S024R"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_2432S024C"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_2432S028R"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_2432S032N"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_2432S032R"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_2432S032C"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_3248S035R"
+          color16swap: 1
+        - board: "esp32dev"
+          smartboard: "ESP32_3248S035C"
+          color16swap: 1
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_4827S043N"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_4827S043R"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_4827S043C"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S043N"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S043R"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S043C"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S050N"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S050R"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S050C"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S070N"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard:  "ESP32_8048S070R"
+          color16swap: 0
+        - board: "esp32-s3-devkitc-1"
+          smartboard: "ESP32_8048S070C"
+          color16swap: 0
     steps:
       - uses: actions/checkout@v3
       - name: Set up python
@@ -49,7 +82,7 @@ jobs:
       - name: Build firmware
         run: platformio run --environment ${{matrix.board}}
         env:
-          PLATFORMIO_BUILD_FLAGS: -DLV_CONF_PATH="${{github.workspace}}/include/lv_conf.h" -D${{matrix.smartboard}}
+          PLATFORMIO_BUILD_FLAGS: -DLV_CONF_PATH="${{github.workspace}}/include/lv_conf.h" -D${{matrix.smartboard}} -DLV_COLOR_16_SWAP=${{matrix.color16swap}}
       - name: Archive
         uses: actions/upload-artifact@v3
         with:
