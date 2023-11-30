@@ -5,8 +5,15 @@ For arduino platform.io.
 
 See [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) for more information
 
+Example (with sound!)
+
+![Example](assets/PXL_20231130_225143662.jpg)
 
 ## Version history
+
+- November 2023
+  - Use of new library
+  - Updated demo application with sound
 
 - March 2023
   - Demo application created
