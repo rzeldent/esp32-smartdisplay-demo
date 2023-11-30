@@ -10,6 +10,7 @@ See [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) for mor
 
 **This new version supports more boards (including ESP32-S3 and ESP32-C3 boards).**
 
+![Example](assets/PXL_20231130_225143662.jpg)
 
 ## Version history
 - November 2023
