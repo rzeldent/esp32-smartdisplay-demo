@@ -88,7 +88,7 @@ void loop()
 #endif
 
 #ifdef HAS_LIGHTSENSOR
-        auto cdr = analogRead(LIGHTSENSOR_IN);
+        auto cdr = analogReadMilliVolts(LIGHTSENSOR_IN);
         sprintf(text_buffer, "%d", cdr);
         lv_label_set_text(ui_lblCdrValue, text_buffer);
 #endif
