@@ -6,9 +6,9 @@ For arduino platform.
 
 See [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) for more information
 
-**The current version will soon be upgraded to the new version [https://github.com/rzeldent/esp32-smartdisplay-demo/tree/feature/esp32s3](https://github.com/rzeldent/esp32-smartdisplay-demo/tree/feature/esp32s3).**
-
-**This new version supports more boards (including ESP32-S3 and ESP32-C3 boards).**
+> [!warning]  
+> The current version will soon be upgraded to the new version [https://github.com/rzeldent/esp32-smartdisplay-demo/tree/feature/esp32s3](https://github.com/rzeldent/esp32-smartdisplay-demo/tree/feature/esp32s3).
+> This new version supports more boards (including ESP32-S3 and ESP32-C3 boards with the parallel 16 bits interface).
 
 ![Example](PXL_20231130_225143662.jpg)
 
