@@ -3,7 +3,11 @@ For arduino platform.io.
 
 [![Platform IO CI](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml/badge.svg)](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml)
 
-See [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) for more information
+>[!TIP]
+>See [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay/tree/feature/esp32s3) for more information.
+
+>[!WARNING]
+>If using the ESP32-S2 (new 16 bits parallel connection) boards, do not forget to INSTALL the board [esp32-s3-devkitc-1-n16-psram](https://github.com/rzeldent/esp32-smartdisplay/blob/feature/esp32s3/assets/boards/esp32-s3-devkitc-1-n16-psram.json) to support the PSRAM.
 
 Example (with sound!)
 
