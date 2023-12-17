@@ -17,8 +17,8 @@ jobs:
           pip install --upgrade platformio
       - name: Build PlatformIO Project
         run: platformio run
-        env:
-          PLATFORMIO_BUILD_FLAGS: -DLV_CONF_PATH="${{github.workspace}}/include/lv_conf.h"
+        #env:
+          #PLATFORMIO_BUILD_FLAGS: -DLV_CONF_PATH="${{github.workspace}}/include/lv_conf.h"
       - name: Archive firmwares
         uses: actions/upload-artifact@v3
         with:
