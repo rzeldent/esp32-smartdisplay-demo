@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: 'true'
+          submodules: "true"
       - name: Set up python
         uses: actions/setup-python@v4
         with:
@@ -17,8 +17,6 @@ jobs:
           pip install --upgrade platformio
       - name: Build PlatformIO Project
         run: platformio run
-        #env:
-          #PLATFORMIO_BUILD_FLAGS: -DLV_CONF_PATH="${{github.workspace}}/include/lv_conf.h"
       - name: Archive firmwares
         uses: actions/upload-artifact@v3
         with:
