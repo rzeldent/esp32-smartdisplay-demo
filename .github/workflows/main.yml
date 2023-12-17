@@ -4,26 +4,21 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        smartboard: ["ESP32_2432S028R", "ESP32_3248S035R", "ESP32_3248S035C"]
-        orientation: ["TFT_ORIENTATION_PORTRAIT", "TFT_ORIENTATION_LANDSCAPE", "TFT_ORIENTATION_PORTRAIT_INV", "TFT_ORIENTATION_LANDSCAPE_INV"]
-        rgborder: ["TFT_PANEL_ORDER_RGB", "TFT_PANEL_ORDER_BGR"]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up python
-        uses: actions/setup-python@v3
         with:
-          python-version: "3.x"
-          architecture: "x64"
-      - name: Install PlatformIO
-        run: python -m pip install platformio
-      - name: Build firmware
+          submodules: "true"
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Install PlatformIO Core
+        run: |
+          pip install --upgrade platformio
+      - name: Build PlatformIO Project
         run: platformio run
-        env:
-          PLATFORMIO_BUILD_FLAGS: -Ofast -D LV_CONF_PATH="${{github.workspace}}/include/lv_conf.h" -D ${{matrix.orientation}} -D ${{matrix.smartboard}} -D ${{matrix.rgborder}}
-      - name: Archive
+      - name: Archive firmwares
         uses: actions/upload-artifact@v3
         with:
-          name: firmware.bin
-          path: .pio/build/*/firmware.bin
+          name: firmwares.zip
+          path: .pio/build/*/*.bin
