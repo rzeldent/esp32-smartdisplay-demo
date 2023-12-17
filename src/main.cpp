@@ -28,19 +28,19 @@ void setup()
     log_i("Free PSRAM: %d bytes", ESP.getPsramSize());
     log_i("SDK version: %s", ESP.getSdkVersion());
 
-#ifdef HAS_RGB_LED
-    pinMode(LED_R, OUTPUT);
-    pinMode(LED_G, OUTPUT);
-    pinMode(LED_B, OUTPUT);
+#ifdef BOARD_HAS_RGB_LED
+    pinMode(LED_R_GPIO, OUTPUT);
+    pinMode(LED_G_GPIO, OUTPUT);
+    pinMode(LED_B_GPIO, OUTPUT);
 #endif
 
-#ifdef HAS_CDS
+#ifdef BOARD_HAS_CDS
     // Setup CDS Light sensor
     analogSetAttenuation(ADC_0db); // 0dB(1.0x) 0~800mV
-    pinMode(CDS_IN, INPUT);
+    pinMode(CDS_GPIO, INPUT);
 #endif
 
-#ifdef HAS_SPEAKER
+#ifdef BOARD_HAS_SPEAK
     // Connect to WiFi
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
     if (WiFi.waitForConnectResult() == WL_CONNECTED)
@@ -68,7 +68,7 @@ ulong next_millis;
 
 void loop()
 {
-#ifdef HAS_SPEAK
+#ifdef BOARD_HAS_SPEAK
     if (audio)
         audio->loop();
 #endif
@@ -82,15 +82,15 @@ void loop()
         sprintf(text_buffer, "%d", now);
         lv_label_set_text(ui_lblMillisecondsValue, text_buffer);
 
-#ifdef HAS_RGB_LED
+#ifdef BOARD_HAS_RGB_LED
         auto const rgb = (now / 2000) % 8;
-        digitalWrite(LED_R, !(rgb & 0x01));
-        digitalWrite(LED_G, !(rgb & 0x02));
-        digitalWrite(LED_B, !(rgb & 0x04));
+        digitalWrite(LED_R_GPIO, !(rgb & 0x01));
+        digitalWrite(LED_G_GPIO, !(rgb & 0x02));
+        digitalWrite(LED_B_GPIO, !(rgb & 0x04));
 #endif
 
-#ifdef HAS_CDS
-        auto cdr = analogReadMilliVolts(CDS_IN);
+#ifdef BOARD_HAS_CDS
+        auto cdr = analogReadMilliVolts(CDS_GPIO);
         sprintf(text_buffer, "%d", cdr);
         lv_label_set_text(ui_lblCdrValue, text_buffer);
 #endif
