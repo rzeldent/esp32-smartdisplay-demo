@@ -28,18 +28,6 @@ void setup()
     log_i("Free PSRAM: %d bytes", ESP.getPsramSize());
     log_i("SDK version: %s", ESP.getSdkVersion());
 
-#ifdef BOARD_HAS_RGB_LED
-    pinMode(LED_R_GPIO, OUTPUT);
-    pinMode(LED_G_GPIO, OUTPUT);
-    pinMode(LED_B_GPIO, OUTPUT);
-#endif
-
-#ifdef BOARD_HAS_CDS
-    // Setup CDS Light sensor
-    analogSetAttenuation(ADC_0db); // 0dB(1.0x) 0~800mV
-    pinMode(CDS_GPIO, INPUT);
-#endif
-
 #ifdef BOARD_HAS_SPEAK
     // Connect to WiFi
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
