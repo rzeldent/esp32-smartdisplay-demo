@@ -72,9 +72,7 @@ void loop()
 
 #ifdef BOARD_HAS_RGB_LED
         auto const rgb = (now / 2000) % 8;
-        digitalWrite(LED_R_GPIO, !(rgb & 0x01));
-        digitalWrite(LED_G_GPIO, !(rgb & 0x02));
-        digitalWrite(LED_B_GPIO, !(rgb & 0x04));
+        smartdisplay_led_set_rgb(rgb & 0x01, rgb & 0x02, rgb & 0x04);
 #endif
 
 #ifdef BOARD_HAS_CDS

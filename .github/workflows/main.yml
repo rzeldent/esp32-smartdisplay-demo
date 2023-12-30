@@ -16,7 +16,7 @@ jobs:
         run: |
           pip install --upgrade platformio
       - name: Build PlatformIO Project
-        run: platformio run -v
+        run: platformio run
       - name: Archive firmwares
         uses: actions/upload-artifact@v3
         with:
