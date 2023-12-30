@@ -28,18 +28,6 @@ void setup()
     log_i("Free PSRAM: %d bytes", ESP.getPsramSize());
     log_i("SDK version: %s", ESP.getSdkVersion());
 
-#ifdef BOARD_HAS_RGB_LED
-    pinMode(LED_R_GPIO, OUTPUT);
-    pinMode(LED_G_GPIO, OUTPUT);
-    pinMode(LED_B_GPIO, OUTPUT);
-#endif
-
-#ifdef BOARD_HAS_CDS
-    // Setup CDS Light sensor
-    analogSetAttenuation(ADC_0db); // 0dB(1.0x) 0~800mV
-    pinMode(CDS_GPIO, INPUT);
-#endif
-
 #ifdef BOARD_HAS_SPEAK
     // Connect to WiFi
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -57,7 +45,7 @@ void setup()
     smartdisplay_init();
 
     auto disp = lv_disp_get_default();
-    // lv_disp_set_rotation(disp, LV_DISP_ROT_90);
+    lv_disp_set_rotation(disp, LV_DISP_ROT_90);
     // lv_disp_set_rotation(disp, LV_DISP_ROT_180);
     // lv_disp_set_rotation(disp, LV_DISP_ROT_270);
 
@@ -84,9 +72,7 @@ void loop()
 
 #ifdef BOARD_HAS_RGB_LED
         auto const rgb = (now / 2000) % 8;
-        digitalWrite(LED_R_GPIO, !(rgb & 0x01));
-        digitalWrite(LED_G_GPIO, !(rgb & 0x02));
-        digitalWrite(LED_B_GPIO, !(rgb & 0x04));
+        smartdisplay_led_set_rgb(rgb & 0x01, rgb & 0x02, rgb & 0x04);
 #endif
 
 #ifdef BOARD_HAS_CDS
