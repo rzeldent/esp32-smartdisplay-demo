@@ -76,7 +76,7 @@ void loop()
 #endif
 
 #ifdef BOARD_HAS_CDS
-        auto cdr = analogReadMilliVolts(CDS_GPIO);
+        auto cdr = analogReadMilliVolts(CDS);
         sprintf(text_buffer, "%d", cdr);
         lv_label_set_text(ui_lblCdrValue, text_buffer);
 #endif
