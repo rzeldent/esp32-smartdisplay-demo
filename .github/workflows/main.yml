@@ -7,7 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: "true"
+          submodules: recursive
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
       - name: Set up python
         uses: actions/setup-python@v4
         with:
