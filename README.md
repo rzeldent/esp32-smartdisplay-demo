@@ -5,9 +5,7 @@ For [PlatformIO](https://platformio.org/)
 [![Platform IO CI](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml/badge.svg)](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml)
 
 This is a demo application for the [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) library that is intended to be used in [PlatformIO](https://platformio.org/).
-
->[!TIP]
->See [https://github.com/rzeldent/esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay/) for more information about the driver library.
+See [https://github.com/rzeldent/esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay/) for more information about the driver library.
 
 >[!WARNING]
 >Do not forget to clone this repository with submodules: ```git clone --recurse-submodules```!
