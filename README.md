@@ -9,7 +9,6 @@ This is a demo application for the [esp32-smartdisplay](https://github.com/rzeld
 >[!TIP]
 >See [https://github.com/rzeldent/esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay/) for more information about the driver library.
 
-
 >[!WARNING]
 >Do not forget to clone this repository with submodules: ```git clone --recurse-submodules```!
 >This is required to also have the latest version of the [Sunton boards definitions](https://github.com/rzeldent/platformio-espressif32-sunton).
