@@ -19,7 +19,9 @@ void OnButtonClicked(lv_event_t *e)
 
 void setup()
 {
-    delay(250);
+#ifdef ARDUINO_USB_CDC_ON_BOOT    
+    delay(5000);
+#endif    
     Serial.begin(115200);
     Serial.setDebugOutput(true);
     log_i("Board: %s", BOARD_NAME);
