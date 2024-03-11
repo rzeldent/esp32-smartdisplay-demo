@@ -17,6 +17,9 @@ Example with sound! (if WiFi credentials are provided and speaker attached)
 
 ## Version history
 
+- March 2024
+  - Added rotate button
+  - Removed radio (and wifi dependencies)
 - December 2023
   - Release 2.0.0
   - Updated demo with sound
