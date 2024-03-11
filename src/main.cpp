@@ -2,19 +2,19 @@
 
 #include <esp32_smartdisplay.h>
 #include <ui/ui.h>
-#include <Audio.h>
 
-#define WIFI_SSID "<your ssid>"
-#define WIFI_PASSWORD "<your ap password>"
-#define RADIO_URL "http://www.wdr.de/wdrlive/media/einslive.m3u"
-
-Audio *audio;
-
-void OnButtonClicked(lv_event_t *e)
+void OnAddOneClicked(lv_event_t *e)
 {
     static uint8_t cnt = 0;
     cnt++;
     lv_label_set_text_fmt(ui_lblCountValue, "%d", cnt);
+}
+
+void OnRotateClicked(lv_event_t *e)
+{
+    auto disp = lv_disp_get_default();
+    auto rotation = (lv_disp_rot_t)((lv_disp_get_rotation(disp) + 1) % LV_DISP_ROT_270);
+    lv_disp_set_rotation(disp, rotation);
 }
 
 void setup()
@@ -30,23 +30,9 @@ void setup()
     log_i("Free PSRAM: %d bytes", ESP.getPsramSize());
     log_i("SDK version: %s", ESP.getSdkVersion());
 
-#ifdef BOARD_HAS_SPEAK
-    // Connect to WiFi
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-    if (WiFi.waitForConnectResult() == WL_CONNECTED)
-    {
-        audio = new Audio(true, I2S_DAC_CHANNEL_LEFT_EN);
-        audio->forceMono(true);
-        audio->setVolume(10);
-
-        while (!audio->connecttohost(RADIO_URL))
-            delay(500);
-    }
-#endif
-
     smartdisplay_init();
 
-    auto disp = lv_disp_get_default();
+    __attribute__((unused)) auto disp = lv_disp_get_default();
     // lv_disp_set_rotation(disp, LV_DISP_ROT_90);
     // lv_disp_set_rotation(disp, LV_DISP_ROT_180);
     // lv_disp_set_rotation(disp, LV_DISP_ROT_270);
@@ -58,11 +44,6 @@ ulong next_millis;
 
 void loop()
 {
-#ifdef BOARD_HAS_SPEAK
-    if (audio)
-        audio->loop();
-#endif
-
     auto const now = millis();
     if (now > next_millis)
     {
