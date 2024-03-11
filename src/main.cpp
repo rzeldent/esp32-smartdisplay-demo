@@ -3,11 +3,18 @@
 #include <esp32_smartdisplay.h>
 #include <ui/ui.h>
 
-void OnButtonClicked(lv_event_t *e)
+void OnAddOneClicked(lv_event_t *e)
 {
     static uint8_t cnt = 0;
     cnt++;
     lv_label_set_text_fmt(ui_lblCountValue, "%d", cnt);
+}
+
+void OnRotateClicked(lv_event_t *e)
+{
+    auto disp = lv_disp_get_default();
+    auto rotation = (lv_disp_rot_t)((lv_disp_get_rotation(disp) + 1) % LV_DISP_ROT_270);
+    lv_disp_set_rotation(disp, rotation);
 }
 
 void setup()
