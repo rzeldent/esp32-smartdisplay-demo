@@ -13,15 +13,15 @@ void OnAddOneClicked(lv_event_t *e)
 void OnRotateClicked(lv_event_t *e)
 {
     auto disp = lv_disp_get_default();
-    auto rotation = (lv_disp_rot_t)((lv_disp_get_rotation(disp) + 1) % LV_DISP_ROT_270);
+    auto rotation = (lv_disp_rot_t)((lv_disp_get_rotation(disp) + 1) % (LV_DISP_ROT_270 + 1));
     lv_disp_set_rotation(disp, rotation);
 }
 
 void setup()
 {
-#ifdef ARDUINO_USB_CDC_ON_BOOT    
+#ifdef ARDUINO_USB_CDC_ON_BOOT
     delay(5000);
-#endif    
+#endif
     Serial.begin(115200);
     Serial.setDebugOutput(true);
     log_i("Board: %s", BOARD_NAME);
@@ -50,7 +50,7 @@ void loop()
         next_millis = now + 500;
 
         char text_buffer[32];
-        sprintf(text_buffer, "%d", now);
+        sprintf(text_buffer, "%lu", now);
         lv_label_set_text(ui_lblMillisecondsValue, text_buffer);
 
 #ifdef BOARD_HAS_RGB_LED
