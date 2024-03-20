@@ -5,6 +5,16 @@
 
 #include <src/extra/libs/qrcode/lv_qrcode.h>
 
+#include <SD.h>
+#include <hal/spi_types.h>
+#include <driver/spi_common.h>
+#include <driver/spi_master.h>
+#include <sdmmc_cmd.h>
+#include <driver/sdspi_host.h>
+#include <esp_vfs_fat.h>
+//#include "driver/spi_master.h"
+//#include "esp32-hal-spi.h"
+
 void OnAddOneClicked(lv_event_t *e)
 {
     static uint8_t cnt = 0;
@@ -46,6 +56,56 @@ void setup()
     const char *qr_data = "https://github.com/rzeldent/esp32-smartdisplay";
     lv_qrcode_update(ui_qrcode, qr_data, strlen(qr_data));
     lv_obj_center(ui_qrcode);
+
+#ifdef BOARD_HAS_TF
+
+//HSPI_HOST
+    // Configura i pin SPI per la comunicazione con la SD
+     spi_bus_config_t buscfg = {
+         .mosi_io_num = TF_SPI_MOSI,
+         .miso_io_num = TF_SPI_MISO,
+         .sclk_io_num = TF_SPI_SCLK,
+         .quadwp_io_num = -1,
+         .quadhd_io_num = -1,
+         .max_transfer_sz = 4000,
+     };
+    // // Inizializza il bus SPI
+    ESP_ERROR_CHECK(spi_bus_initialize(TF_SPI_HOST, &buscfg, SPI_DMA_CH_AUTO));
+
+    spi_device_interface_config_t devcfg = {
+        .mode = 0,                         // Modalità SPI
+        .clock_speed_hz = SDMMC_FREQ_DEFAULT, // Velocità di clock SPI
+        .spics_io_num = TF_CS,         // Pin del chip select
+        .queue_size = 7,                   // Lunghezza della coda delle transazioni SPI
+    };
+
+    spi_device_handle_t spi;
+    ESP_ERROR_CHECK(spi_bus_add_device(TF_SPI_HOST, &devcfg, &spi)); 
+
+    sdspi_dev_handle_t sd_handle;
+    sdspi_device_config_t dev_config = SDSPI_DEVICE_CONFIG_DEFAULT();
+    dev_config.host_id   = TF_SPI_HOST;
+    dev_config.gpio_cs   = (gpio_num_t)TF_CS;
+
+    ESP_ERROR_CHECK(sdspi_host_init_device(&dev_config, &sd_handle));
+
+    sdmmc_host_t sd_host = SDSPI_HOST_DEFAULT();
+    sd_host.slot = TF_SPI_HOST;
+    sd_host.max_freq_khz = SDMMC_FREQ_DEFAULT;
+
+    sdmmc_card_t *card;
+
+    esp_vfs_fat_sdmmc_mount_config_t mount_config = {
+        .format_if_mount_failed = false,
+        .max_files = 5,
+        .allocation_unit_size = 16 * 1024
+    };
+
+    //ESP_ERROR_CHECK(esp_vfs_fat_sdspi_mount("/", &sd_host, &dev_config, &mount_config, &card));
+   //esp_vfs_fat_sdspi_mount
+
+#endif
+
 }
 
 ulong next_millis;
