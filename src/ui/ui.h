@@ -35,7 +35,7 @@ extern lv_obj_t * ui_Image1;
 extern lv_obj_t * ui____initial_actions0;
 
 
-LV_IMG_DECLARE(ui_img_lena80x80_png);    // assets/Lena80x80.png
+LV_IMG_DECLARE(ui_img_philips_80x106_png);    // assets/Philips_80x106.png
 
 
 
