@@ -3,7 +3,7 @@
 #include <esp32_smartdisplay.h>
 #include <ui/ui.h>
 
-#include <src/extra/libs/qrcode/lv_qrcode.h>
+#include <src/libs/qrcode/lv_qrcode.h>
 
 void OnAddOneClicked(lv_event_t *e)
 {
@@ -15,8 +15,8 @@ void OnAddOneClicked(lv_event_t *e)
 void OnRotateClicked(lv_event_t *e)
 {
     auto disp = lv_disp_get_default();
-    auto rotation = (lv_disp_rot_t)((lv_disp_get_rotation(disp) + 1) % (LV_DISP_ROT_270 + 1));
-    lv_disp_set_rotation(disp, rotation);
+    auto rotation = (lv_display_rotation_t)((lv_disp_get_rotation(disp) + 1) % (LV_DISPLAY_ROTATION_270 + 1));
+    lv_display_set_rotation(disp, rotation);
 }
 
 void setup()
@@ -42,7 +42,10 @@ void setup()
     ui_init();
 
     // To use third party libraries, enable the define in lv_conf.h: #define LV_USE_QRCODE 1
-    auto ui_qrcode = lv_qrcode_create(ui_scrMain, 100, lv_color_black(), lv_color_white());
+    auto ui_qrcode = lv_qrcode_create(ui_scrMain);
+    lv_qrcode_set_size(ui_qrcode, 100);
+    lv_qrcode_set_dark_color(ui_qrcode, lv_color_black());
+    lv_qrcode_set_light_color(ui_qrcode, lv_color_white());
     const char *qr_data = "https://github.com/rzeldent/esp32-smartdisplay";
     lv_qrcode_update(ui_qrcode, qr_data, strlen(qr_data));
     lv_obj_center(ui_qrcode);
