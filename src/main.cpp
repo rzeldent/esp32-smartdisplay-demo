@@ -5,9 +5,9 @@
 
 void OnAddOneClicked(lv_event_t *e)
 {
-    static uint8_t cnt = 0;
+    static uint32_t cnt = 0;
     cnt++;
-    lv_label_set_text_fmt(ui_lblCountValue, "%d", cnt);
+    lv_label_set_text_fmt(ui_lblCountValue, "%u", cnt);
 }
 
 void OnRotateClicked(lv_event_t *e)
@@ -50,9 +50,8 @@ void setup()
 }
 
 ulong next_millis;
+auto lv_last_tick = millis();
 
-ulong lv_last_tick;
- 
 void loop()
 {
     auto const now = millis();
