@@ -51,6 +51,8 @@ void setup()
 
 ulong next_millis;
 
+ulong lv_last_tick;
+ 
 void loop()
 {
     auto const now = millis();
@@ -74,5 +76,9 @@ void loop()
 #endif
     }
 
+    // Update the ticker
+    lv_tick_inc(now - lv_last_tick);
+    lv_last_tick = now;
+    // Update the UI
     lv_timer_handler();
 }
