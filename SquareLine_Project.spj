@@ -3223,7 +3223,7 @@
                   {
                     "nid": 1573988665,
                     "strtype": "IMAGE/Asset",
-                    "strval": "assets\\Lena80x80.png",
+                    "strval": "assets/Philips_80x106.png",
                     "InheritedType": 5
                   },
                   {
@@ -3779,7 +3779,7 @@
     "theme_color2": 0,
     "uiExportFolderPath": "C:\\Users\\rzeld\\source\\repos\\esp32-smartdisplay-demo\\src\\ui",
     "projectExportFolderPath": "C:\\Users\\rzeld\\source\\repos\\esp32-smartdisplay-demo",
-    "backup_cnt": 71,
+    "backup_cnt": 72,
     "autosave_cnt": 0,
     "lvgl_version": "8.3.6",
     "callfuncsexport": "CPP_FILE",
