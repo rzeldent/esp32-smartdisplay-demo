@@ -11,11 +11,10 @@ See [https://github.com/rzeldent/esp32-smartdisplay](https://github.com/rzeldent
 >Do not forget to clone this repository with submodules: ```git clone --recurse-submodules```!
 >This is required to also have the latest version of the [Sunton boards definitions](https://github.com/rzeldent/platformio-espressif32-sunton).
 
-Example with sound! (if WiFi credentials are provided and speaker attached)
-
 ![Example](assets/PXL_20231130_225143662.jpg)
 
 ## Version history
+
 - July 2024
   - Updated SquareLine to 1.4.1
   - Use release 2.0.10
