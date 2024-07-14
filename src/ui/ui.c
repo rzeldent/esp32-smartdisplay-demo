@@ -29,7 +29,6 @@ lv_obj_t * ui_GradR;
 lv_obj_t * ui_GradG;
 lv_obj_t * ui_GradB;
 lv_obj_t * ui____initial_actions0;
-const lv_image_dsc_t * ui_imgset_philips_80x[1] = {&ui_img_philips_80x106_png};
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
 #if LV_COLOR_DEPTH != 16
