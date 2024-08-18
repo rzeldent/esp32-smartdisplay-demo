@@ -3,8 +3,6 @@
 #include <esp32_smartdisplay.h>
 #include <ui/ui.h>
 
-#include <src/extra/libs/qrcode/lv_qrcode.h>
-
 void OnAddOneClicked(lv_event_t *e)
 {
     static uint8_t cnt = 0;
