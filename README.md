@@ -17,6 +17,9 @@ Example with sound! (if WiFi credentials are provided and speaker attached)
 
 ## Version history
 
+- August 2024
+  - LVGL 9.2
+  - New boards
 - July 2024
   - LVGL 9.1
   - Use release 2.0.10
