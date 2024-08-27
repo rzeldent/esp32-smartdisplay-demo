@@ -25,6 +25,11 @@ Example with sound! (if WiFi credentials are provided and speaker attached)
   - Use release 2.0.10
 - June 2024
   - Update SquareLine project to 1.4.1
+- July 2024
+  - LVGL 9.1
+  - Use release 2.0.10
+- June 2024
+  - Update SquareLine project to 1.4.1
 - March 2024
   - Added rotate button
   - Removed radio (and wifi dependencies)
