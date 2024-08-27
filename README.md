@@ -7,9 +7,9 @@ For [PlatformIO](https://platformio.org/)
 This is a demo application for the [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) library that is intended to be used in [PlatformIO](https://platformio.org/).
 See [https://github.com/rzeldent/esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay/) for more information about the driver library.
 
->[!WARNING]
->Do not forget to clone this repository with submodules: ```git clone --recurse-submodules```!
->This is required to also have the latest version of the [Sunton boards definitions](https://github.com/rzeldent/platformio-espressif32-sunton).
+> [!WARNING]
+> Do not forget to clone this repository with submodules: `git clone --recurse-submodules`!
+> This is required to also have the latest version of the [Sunton boards definitions](https://github.com/rzeldent/platformio-espressif32-sunton).
 
 Example with sound! (if WiFi credentials are provided and speaker attached)
 
@@ -17,6 +17,11 @@ Example with sound! (if WiFi credentials are provided and speaker attached)
 
 ## Version history
 
+- July 2024
+  - LVGL 9.1
+  - Use release 2.0.10
+- June 2024
+  - Update SquareLine project to 1.4.1
 - March 2024
   - Added rotate button
   - Removed radio (and wifi dependencies)
@@ -30,4 +35,3 @@ Example with sound! (if WiFi credentials are provided and speaker attached)
   - Demo application created
 - October 2023
   - Updated UI using [SquareLine Studio](https://squareline.io). This is a graphical UI design tool.
-  
