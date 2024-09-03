@@ -1,4 +1,4 @@
 [submodule "boards"]
 	path = boards
 	url = https://github.com/rzeldent/platformio-espressif32-sunton.git
-	branch = feature/iodefs
+	branch = release/2.0.9
