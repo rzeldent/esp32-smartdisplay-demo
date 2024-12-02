@@ -2,15 +2,9 @@
 
 #include <esp32_smartdisplay.h>
 #include <ui/ui.h>
+#include <ui/screens.h>
 
-void OnAddOneClicked(lv_event_t *e)
-{
-    static uint32_t cnt = 0;
-    cnt++;
-    lv_label_set_text_fmt(ui_lblCountValue, "%u", cnt);
-}
-
-void OnRotateClicked(lv_event_t *e)
+extern "C" void action_on_rotate(lv_event_t *e)
 {
     auto disp = lv_disp_get_default();
     auto rotation = (lv_display_rotation_t)((lv_disp_get_rotation(disp) + 1) % (LV_DISPLAY_ROTATION_270 + 1));
@@ -40,7 +34,7 @@ void setup()
     ui_init();
 
     // To use third party libraries, enable the define in lv_conf.h: #define LV_USE_QRCODE 1
-    auto ui_qrcode = lv_qrcode_create(ui_scrMain);
+    auto ui_qrcode = lv_qrcode_create(objects.main);
     lv_qrcode_set_size(ui_qrcode, 100);
     lv_qrcode_set_dark_color(ui_qrcode, lv_color_black());
     lv_qrcode_set_light_color(ui_qrcode, lv_color_white());
@@ -59,10 +53,9 @@ void loop()
     {
         next_millis = now + 500;
 
-        char text_buffer[32];
+         char text_buffer[32];
         sprintf(text_buffer, "%lu", now);
-        lv_label_set_text(ui_lblMillisecondsValue, text_buffer);
-
+        lv_label_set_text(objects.milliseconds_value, text_buffer);
 #ifdef BOARD_HAS_RGB_LED
         auto const rgb = (now / 2000) % 8;
         smartdisplay_led_set_rgb(rgb & 0x01, rgb & 0x02, rgb & 0x04);
