@@ -23,6 +23,16 @@ static void event_handler_cb_main_button_add(lv_event_t *e) {
     }
 }
 
+static void event_handler_cb_main_rotate(lv_event_t *e) {
+    lv_event_code_t event = lv_event_get_code(e);
+    void *flowState = lv_event_get_user_data(e);
+    
+    if (event == LV_EVENT_PRESSED) {
+        e->user_data = (void *)0;
+        action_on_rotate(e);
+    }
+}
+
 static void event_handler_cb_main_obj0(lv_event_t *e) {
     lv_event_code_t event = lv_event_get_code(e);
     void *flowState = lv_event_get_user_data(e);
@@ -124,6 +134,7 @@ void create_screen_main() {
                     objects.rotate = obj;
                     lv_obj_set_pos(obj, 0, 0);
                     lv_obj_set_size(obj, 100, 50);
+                    lv_obj_add_event_cb(obj, event_handler_cb_main_rotate, LV_EVENT_ALL, flowState);
                     lv_obj_set_style_align(obj, LV_ALIGN_BOTTOM_LEFT, LV_PART_MAIN | LV_STATE_DEFAULT);
                     {
                         lv_obj_t *parent_obj = obj;
@@ -212,7 +223,7 @@ void tick_screen_main() {
 
 
 static const char *screen_names[] = { "Main" };
-static const char *object_names[] = { "main", "button_add", "obj0", "milliseconds", "light", "count", "milliseconds_value", "cdr_value", "count_value", "rotate", "grad_r", "grad_g", "grad_b" };
+static const char *object_names[] = { "main", "button_add", "rotate", "obj0", "milliseconds", "light", "count", "milliseconds_value", "cdr_value", "count_value", "grad_r", "grad_g", "grad_b" };
 
 void create_screens() {
     eez_flow_init_screen_names(screen_names, sizeof(screen_names) / sizeof(const char *));

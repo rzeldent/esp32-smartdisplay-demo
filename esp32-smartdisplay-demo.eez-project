@@ -571,7 +571,15 @@
                     "childStyles": []
                   },
                   "timeline": [],
-                  "eventHandlers": [],
+                  "eventHandlers": [
+                    {
+                      "objID": "4450be69-8a03-4564-f53d-a35c1e630da5",
+                      "eventName": "PRESSED",
+                      "handlerType": "action",
+                      "action": "OnRotate",
+                      "userData": 0
+                    }
+                  ],
                   "identifier": "Rotate",
                   "leftUnit": "px",
                   "topUnit": "px",
