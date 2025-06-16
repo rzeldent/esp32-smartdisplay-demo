@@ -17,6 +17,8 @@ Example with sound! (if WiFi credentials are provided and speaker attached)
 
 ## Version history
 
+- December 2024
+  - Use EEZ Studio for designing the GUI [https://www.envox.eu/studio/studio-introduction/](https://www.envox.eu/studio/studio-introduction/)
 - August 2024
   - LVGL 9.2
   - New boards
