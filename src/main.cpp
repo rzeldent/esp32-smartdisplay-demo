@@ -74,5 +74,8 @@ void loop()
     // Update the UI
     lv_timer_handler();
     // ui for eez
-    ui_tick();
+    auto ui_tick_result = ui_tick();
+    if (ui_tick_result != 0) {
+        log_e("ui_tick() failed with error code: %d", ui_tick_result);
+    }
 }
