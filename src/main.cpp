@@ -73,4 +73,6 @@ void loop()
     lv_last_tick = now;
     // Update the UI
     lv_timer_handler();
+    // ui for eez
+    ui_tick();
 }
