@@ -53,8 +53,9 @@ void loop()
     {
         next_millis = now + 500;
 
-         char text_buffer[32];
+        char text_buffer[32];
         sprintf(text_buffer, "%lu", now);
+        lv_label_set_text(objects.milliseconds_value, text_buffer);
         lv_label_set_text(objects.milliseconds_value, text_buffer);
 #ifdef BOARD_HAS_RGB_LED
         auto const rgb = (now / 2000) % 8;
@@ -64,6 +65,7 @@ void loop()
 #ifdef BOARD_HAS_CDS
         auto cdr = analogReadMilliVolts(CDS);
         sprintf(text_buffer, "%d", cdr);
+        lv_label_set_text(objects.cdr_value, text_buffer);
         lv_label_set_text(objects.cdr_value, text_buffer);
 #endif
     }
