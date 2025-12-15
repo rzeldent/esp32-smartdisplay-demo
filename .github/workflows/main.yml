@@ -23,7 +23,7 @@ jobs:
       - name: Build firmware
         run: pio run
       - name: Archive firmwares
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: firmwares.zip
           path: .pio/build/*/*.bin
