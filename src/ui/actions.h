@@ -9,7 +9,6 @@ extern "C" {
 
 extern void action_on_rotate(lv_event_t * e);
 
-
 #ifdef __cplusplus
 }
 #endif
