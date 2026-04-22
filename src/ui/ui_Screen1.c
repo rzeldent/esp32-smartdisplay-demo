@@ -91,14 +91,16 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_transform_angle(ui_Label2, -900, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label4 = lv_label_create(ui_Screen1);
-    lv_obj_set_width(ui_Label4, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_width(ui_Label4, 140);
     lv_obj_set_height(ui_Label4, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label4, -30);
     lv_obj_set_y(ui_Label4, 70);
     lv_obj_set_align(ui_Label4, LV_ALIGN_CENTER);
+    lv_label_set_long_mode(ui_Label4, LV_LABEL_LONG_CLIP);
     lv_label_set_text(ui_Label4, "Finishing Goods");
     lv_obj_set_style_text_color(ui_Label4, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label4, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui_Label4, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label4, &lv_font_montserrat_18, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_transform_angle(ui_Label4, -900, LV_PART_MAIN | LV_STATE_DEFAULT);
 

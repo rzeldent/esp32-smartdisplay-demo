@@ -1,10 +1,10 @@
 #include <pgmspace.h>
  
 #define SECRET
-#define THINGNAME "LIV24"                         //change this
+#define THINGNAME "vtgdrth"                         //change this
  
-const char WIFI_SSID[] = "VTG@IoTFG";               //change this VTG@IoTDR
-const char WIFI_PASSWORD[] = "@vtgiot4321";           //change this
+const char WIFI_SSID[] = "VTG@IoTDR";               //change this VTG@IoTDR
+const char WIFI_PASSWORD[] = "@vtgiot4321";           //change this "@vtgiot4321"
 const char AWS_IOT_ENDPOINT[] = "a1x0dm3q26289z-ats.iot.ap-southeast-1.amazonaws.com";       //change this
  
 // Amazon Root CA 1
