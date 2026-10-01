@@ -7,17 +7,25 @@
 extern "C" {
 #endif
 
+// Screens
+
+enum ScreensEnum {
+    _SCREEN_ID_FIRST = 1,
+    SCREEN_ID_MAIN = 1,
+    _SCREEN_ID_LAST = 1
+};
+
 typedef struct _objects_t {
     lv_obj_t *main;
-    lv_obj_t *button_add;
-    lv_obj_t *rotate;
-    lv_obj_t *obj0;
     lv_obj_t *milliseconds;
     lv_obj_t *light;
     lv_obj_t *count;
     lv_obj_t *milliseconds_value;
     lv_obj_t *cdr_value;
     lv_obj_t *count_value;
+    lv_obj_t *button_add;
+    lv_obj_t *rotate;
+    lv_obj_t *obj0;
     lv_obj_t *grad_r;
     lv_obj_t *grad_g;
     lv_obj_t *grad_b;
@@ -25,16 +33,13 @@ typedef struct _objects_t {
 
 extern objects_t objects;
 
-enum ScreensEnum {
-    SCREEN_ID_MAIN = 1,
-};
-
 void create_screen_main();
 void tick_screen_main();
 
-void create_screens();
+void tick_screen_by_id(enum ScreensEnum screenId);
 void tick_screen(int screen_index);
 
+void create_screens();
 
 #ifdef __cplusplus
 }
