@@ -53,7 +53,7 @@ void loop()
     {
         next_millis = now + 500;
 
-         char text_buffer[32];
+        char text_buffer[32];
         sprintf(text_buffer, "%lu", now);
         lv_label_set_text(objects.milliseconds_value, text_buffer);
 #ifdef BOARD_HAS_RGB_LED

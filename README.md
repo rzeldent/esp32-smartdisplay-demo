@@ -2,7 +2,12 @@
 
 For [PlatformIO](https://platformio.org/)
 
-[![Platform IO CI](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml/badge.svg)](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml)
+[![PlatformIO CI](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml/badge.svg)](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml)
+[![License](https://img.shields.io/github/license/rzeldent/esp32-smartdisplay-demo)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/rzeldent/esp32-smartdisplay-demo?style=flat)](https://github.com/rzeldent/esp32-smartdisplay-demo/stargazers)
+[![PlatformIO](https://img.shields.io/badge/PlatformIO-compatible-orange)](https://platformio.org/)
+[![LVGL](https://img.shields.io/badge/LVGL-9.2-blue)](https://lvgl.io/)
+[![ESP32](https://img.shields.io/badge/ESP32-compatible-red)](https://www.espressif.com/en/products/socs/esp32)
 
 This is a demo application for the [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) library that is intended to be used in [PlatformIO](https://platformio.org/).
 See [https://github.com/rzeldent/esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay/) for more information about the driver library.
