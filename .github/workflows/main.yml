@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: "3.x"
+          check-latest: true
       - name: Install PlatformIO
         run: python -m pip install -U platformio
       - name: Build firmware
