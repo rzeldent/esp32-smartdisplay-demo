@@ -546,11 +546,11 @@
         "borders": [],
         "layout": {
           "type": "row",
-          "id": "#ff8102e5-93cb-44ad-a769-14df2b75f0b1",
+          "id": "#4fa0c20d-7dc8-4d10-b95c-7aebebdd7b10",
           "children": [
             {
               "type": "tabset",
-              "id": "#01e70d98-c5c6-4c04-8e52-b6af4dccd4a4",
+              "id": "#f6a6f51d-781b-4acd-a019-602d122dc010",
               "weight": 70,
               "enableDrop": false,
               "enableDrag": false,
@@ -569,12 +569,12 @@
             },
             {
               "type": "row",
-              "id": "#a6c7a854-155e-45c4-bf89-51b540915286",
+              "id": "#62e216f5-c2a5-4182-8dea-b91e4c84e2fe",
               "weight": 30,
               "children": [
                 {
                   "type": "tabset",
-                  "id": "#d1c36a7f-faa9-49bd-af65-8d065db3ce78",
+                  "id": "#99b1adf6-f634-42c9-9175-9cb28522044f",
                   "weight": 50,
                   "enableDrop": false,
                   "enableDrag": false,
@@ -593,7 +593,7 @@
                 },
                 {
                   "type": "tabset",
-                  "id": "#36bc6c05-5e42-4e4b-911d-84d0584a65b2",
+                  "id": "#e76eb849-313a-489b-9cd6-584aaa6887e6",
                   "weight": 50,
                   "enableDrop": false,
                   "enableDrag": false,

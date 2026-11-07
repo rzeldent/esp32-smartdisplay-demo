@@ -56,7 +56,6 @@ void loop()
         char text_buffer[32];
         sprintf(text_buffer, "%lu", now);
         lv_label_set_text(objects.milliseconds_value, text_buffer);
-        lv_label_set_text(objects.milliseconds_value, text_buffer);
 #ifdef BOARD_HAS_RGB_LED
         auto const rgb = (now / 2000) % 8;
         smartdisplay_led_set_rgb(rgb & 0x01, rgb & 0x02, rgb & 0x04);
@@ -65,7 +64,6 @@ void loop()
 #ifdef BOARD_HAS_CDS
         auto cdr = analogReadMilliVolts(CDS);
         sprintf(text_buffer, "%d", cdr);
-        lv_label_set_text(objects.cdr_value, text_buffer);
         lv_label_set_text(objects.cdr_value, text_buffer);
 #endif
     }
